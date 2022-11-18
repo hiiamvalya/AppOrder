@@ -17,6 +17,7 @@ public class AppOrderPositiveTest {
 
     @BeforeAll
     public static void setup() {
+
         WebDriverManager.chromedriver().setup();
     }
 
@@ -37,12 +38,12 @@ public class AppOrderPositiveTest {
     }
 
     @Test
-    void shouldBeSuccessForm() {
+    public void shouldBeSuccessfulForm() {
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Вася Иванов");
-        driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+70123456789");
-        driver.findElement(By.cssSelector("label[data-test-id=agreement]")).click();
+        driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79012345678");
+        driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
         driver.findElement(By.cssSelector("button.button")).click();
-        var actualText  = driver.findElement(By.cssSelector("[data-test-id=order-success] input")).getText().trim();
+        var actualText  = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText().trim();
         assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", actualText);
     }
 }
